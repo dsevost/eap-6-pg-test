@@ -46,7 +46,12 @@ clean:
 clean-all: clean
 	oc \
 	    delete \
-		secret eap-app-secret
+		secret eap-app-secret \
+	|| true
+	oc \
+	    delete \
+		sa eap-service-account \
+	|| true
 
 pg: load-pg-schema-and-data
 
