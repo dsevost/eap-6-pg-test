@@ -4,8 +4,8 @@
 <%
     String jndiName;
     String sqlString;
-    java.sql.Connection connection;
-    java.sql.Statement statement;
+    java.sql.Connection connection = null;
+    java.sql.Statement statement = null;
 
     jndiName = request.getParameter("jndiName");
     if (jndiName == null ) {
