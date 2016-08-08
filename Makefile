@@ -21,7 +21,7 @@ all: login project new-app secrets
 login:
 	oc \
 	    login \
-	    -u $(OUSER) -p $(OPASSWD)
+	    -u $(OUSER) -p $(OPASSWD) $(OPENSHIFT_URL)
 
 project:
 	oc project $(OPROJECT)

@@ -41,33 +41,52 @@
     </form>
 <%
     if (!jndiName.equals("") && !sqlString.equals("")) {
-	javax.naming.InitialContext context;
-	context = new javax.naming.InitialContext();
-	javax.sql.DataSource ds = (javax.sql.DataSource) context.lookup(jndiName);
-	connection = ds.getConnection();
-	statement = connection.createStatement();
-	java.sql.ResultSet rs = statement.executeQuery(sqlString);
-	java.sql.ResultSetMetaData rsmd = rs.getMetaData();
+	try {
+	    javax.naming.InitialContext context;
+	    context = new javax.naming.InitialContext();
+	    javax.sql.DataSource ds = (javax.sql.DataSource) context.lookup(jndiName);
+	    connection = ds.getConnection();
+	    statement = connection.createStatement();
+	    if (sqlString.toUpper().startsWith("SELECT")) {
+		java.sql.ResultSet rs = statement.executeQuery(sqlString);
+		java.sql.ResultSetMetaData rsmd = rs.getMetaData();
 
-	int columns = rsmd.getColumnCount();
+		int columns = rsmd.getColumnCount();
 
-	out.println("<table border=\"1\">");
-	out.println("<tr>");
-	for (int i = 1; i <=columns; i ++ ) {
-	    out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-	}
-	out.println("</tr>");
-	while(rs.next()) {
-	    out.println("<tr>");
-	    for(int i = 1; i <= columns; i ++ ) {
-		out.println("<td>" + rs.getObject(i) + "</td>");
+		out.println("<table border=\"1\">");
+		out.println("<tr>");
+		for (int i = 1; i <=columns; i ++ ) {
+		    out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+		}
+		out.println("</tr>");
+		while(rs.next()) {
+		    out.println("<tr>");
+		    for(int i = 1; i <= columns; i ++ ) {
+			out.println("<td>" + rs.getObject(i) + "</td>");
+		    }
+		    out.println("</tr>");
+		}
+		out.println("</table>");
+		rs.close();
+	    } else {
+		statement.executeUpdate(sqlString);
 	    }
-	    out.println("</tr>");
+	} finally {
+	    try {
+		statement.close();
+	    } catch (Exception e) {
+		e.printStackTrace(out);
+	    } finally {
+		statement = null;
+	    }
+	    try {
+		connection.close();
+	    } catch (Exception e) {
+		e.printStackTrace(out);
+	    } finally {
+		connection = null;
+	    }
 	}
-	out.println("</table>");
-	rs.close();
-	statement.close();
-	connection.close();
     }
 %>
 
