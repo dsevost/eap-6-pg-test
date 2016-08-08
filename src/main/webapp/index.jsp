@@ -75,14 +75,14 @@
 	    try {
 		statement.close();
 	    } catch (Exception e) {
-		e.printStackTrace(out);
+		e.printStackTrace(new java.io.PrintWriter(out));
 	    } finally {
 		statement = null;
 	    }
 	    try {
 		connection.close();
 	    } catch (Exception e) {
-		e.printStackTrace(out);
+		e.printStackTrace(new java.io.PrintWriter(out));
 	    } finally {
 		connection = null;
 	    }
