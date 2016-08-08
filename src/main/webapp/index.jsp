@@ -47,7 +47,7 @@
 	    javax.sql.DataSource ds = (javax.sql.DataSource) context.lookup(jndiName);
 	    connection = ds.getConnection();
 	    statement = connection.createStatement();
-	    if (sqlString.toUpper().startsWith("SELECT")) {
+	    if (sqlString.toUpperCase().startsWith("SELECT")) {
 		java.sql.ResultSet rs = statement.executeQuery(sqlString);
 		java.sql.ResultSetMetaData rsmd = rs.getMetaData();
 
