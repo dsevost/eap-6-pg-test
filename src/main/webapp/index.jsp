@@ -1,5 +1,10 @@
 <html>
 <body>
+<h2>Cluster information</h2>
+<p>
+    Local server name (cluster node): <%= System.getProperty("jboss.node.name") + "/" + System.getProperty("jboss.server.name")  %><br/>
+    Server name: <%= request.getServerName() %><br/>
+</p>
 <h2>Datasource test</h2>
 <%
     String jndiName;
