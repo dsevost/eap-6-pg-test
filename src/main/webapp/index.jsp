@@ -7,7 +7,7 @@
     Server name: <%= request.getServerName() %><br/>
 </p>
 </h2>
-<h2>Datasource test</h2>
+<h1>Datasource test</h1>
 <%
     String jndiName;
     String sqlString;
