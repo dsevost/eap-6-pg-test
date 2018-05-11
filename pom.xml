@@ -24,7 +24,7 @@
 		-->
             <dependency>
                 <groupId>org.jboss.bom.eap</groupId>
-                <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+                <artifactId>jboss-javaee-6.0-with-logging</artifactId>
                 <version>${version.jboss.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
