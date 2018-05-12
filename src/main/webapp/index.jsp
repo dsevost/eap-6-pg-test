@@ -1,52 +1,66 @@
 <html>
+
 <body>
-<h1>Cluster information</h1>
-<h2>
-<p>
-    Local server name (cluster node): <%= System.getProperty("jboss.node.name") + "/" + System.getProperty("jboss.server.name")  %><br/>
-    Server name: <%= request.getServerName() %><br/>
-</p>
-</h2>
-<h1>Datasource test</h1>
-<%
+	<h1>Cluster information</h1>
+	<h2>
+		<p>
+			Local server name (cluster node):
+			<%= System.getProperty("jboss.node.name") + "/" + System.getProperty("jboss.server.name")  %>
+				<br/> Server name:
+				<%= request.getServerName() %>
+					<br/>
+		</p>
+	</h2>
+	<h1>Datasource test</h1>
+	<%
     String jndiName;
     String sqlString;
     java.sql.Connection connection = null;
     java.sql.Statement statement = null;
 
     jndiName = request.getParameter("jndiName");
-    if (jndiName == null ) {
-	jndiName = "";
+    if (jndiName == null) {
+		jndiName = "";
     }
     sqlString = request.getParameter("sqlString");
     if (sqlString == null) {
-	sqlString = "";
+		sqlString = "";
     }
-%>
-    <form>
-	<table>
-	    <thead>
-		<tr>
-		    <th></th>
-		    <th></th>
-		</tr>
-	    </thead>
-		<tr>
-		    <td><label>JNDI name</label></td>
-		    <td><input name="jndiName" type="input" value="<%= jndiName %>" size="42"/></td>
-		</tr>
-		<tr>
-		    <td><label>SQL String</label></td>
-		    <td><textarea name="sqlString" rows="5" cols="40"><%= sqlString %></textarea></td>
-		</tr>
-		<tr align="center">
-		    <td colspan="2"><input name="submit" type="submit"/></td>
-		</tr>
-	    <tbody>
-	    </tbody>
-	</table>
-    </form>
-<%
+	%>
+		<form>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tr>
+					<td>
+						<label>JNDI name</label>
+					</td>
+					<td>
+						<input name="jndiName" type="input" value="<%= jndiName %>" size="42" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>SQL String</label>
+					</td>
+					<td>
+						<textarea name="sqlString" rows="5" cols="40"><%= sqlString %></textarea>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">
+						<input name="submit" type="submit" />
+					</td>
+				</tr>
+				<tbody>
+				</tbody>
+			</table>
+		</form>
+		<%
     if (!jndiName.equals("") && !sqlString.equals("")) {
 	try {
 	    javax.naming.InitialContext context;
@@ -98,4 +112,5 @@
 %>
 
 </body>
+
 </html>
