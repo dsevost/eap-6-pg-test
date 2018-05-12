@@ -1,6 +1,6 @@
-target/**
-deployments/**
 .classpath
 .project
 .settings
-
+.vscode
+deployments/**
+target/**
