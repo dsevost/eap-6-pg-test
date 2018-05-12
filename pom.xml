@@ -25,14 +25,14 @@
       <!--
  https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/6.4/html/development_guide/sect-use_the_maven_repository#Maven_BOM_Usage
 	-->
-      <dependency>
+      <!-- dependency>
         <groupId>org.jboss.bom.eap</groupId>
         <artifactId>jboss-javaee-6.0-with-tools</artifactId>
         <version>${version.jboss.bom}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!-- dependency>
+      <dependency>
         <groupId>org.jboss.spec</groupId>
         <artifactId>jboss-javaee-6.0</artifactId>
         <version>${version.jboss.spec}</version>
@@ -50,14 +50,14 @@
     </dependencies>
   </dependencyManagement>
 
-  <dependencies>
+  <!-- dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
       <version>4.11</version>
     </dependency>
-  </dependencies>
+  </dependencies -->
 
   <build>
     <finalName>jdbc-test-webapp</finalName>
