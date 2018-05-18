@@ -17,22 +17,26 @@
     	java.sql.Connection connection = null;
     	java.sql.Statement statement = null;
 
-    	jndiName = request.getParameter("jndiName");
-    	if (jndiName == null) {
-			jndiName = System.getenv("DB_JNDI");
-			if(jndiName == null) {
-				jndiName = "";
+		try {
+	    	jndiName = request.getParameter("jndiName");
+    		if (jndiName == null) {
+				jndiName = System.getenv("DB_JNDI");
+				if(jndiName == null) {
+					jndiName = "";
+				}
+    		}
+    		sqlString = request.getParameter("sqlString");
+	    	if (sqlString == null) {
+				sqlString = 
+					"-- create table if not exists keypair (k integer not null primary key, v varchar(256)); \n" +
+					"-- insert into keypair VALUES (1, 'value 1'); \n" +
+					"-- insert into keypair VALUES (2, 'value 2'); \n" +
+					"-- select k,v from keypair; \n" +
+				"";
 			}
-    	}
-    	sqlString = request.getParameter("sqlString");
-    	if (sqlString == null) {
-			sqlString = 
-				"-- create table if not exists keypair (k integer not null primary key, v varchar(256)); \n" +
-				"-- insert into keypair VALUES (1, 'value 1'); \n" +
-				"-- insert into keypair VALUES (2, 'value 2'); \n" +
-				"-- select k,v from keypair; \n" +
-			"";
-    	}
+		} catch (Exception e) {
+			e.printStackTrace(new java.io.PrintWriter(out));
+		}
 	%>
 		<form>
 			<table>
@@ -98,7 +102,9 @@
 		rs.close();
 	    } else {
 		statement.executeUpdate(sqlString);
-	    }
+		}
+	} catch(Exception e) {
+		e.printStackTrace(new java.io.PrintWriter(out));
 	} finally {
 	    try {
 		statement.close();
