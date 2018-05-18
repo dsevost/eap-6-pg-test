@@ -35,6 +35,8 @@
 				"";
 			}
 		} catch (Exception e) {
+			jndiName = "";
+			sqlString = "";
 			e.printStackTrace(new java.io.PrintWriter(out));
 		}
 	%>
