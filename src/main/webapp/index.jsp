@@ -12,16 +12,16 @@
 	</h2>
 	<h1>Session information</h1>
 	<h2>
-		SessionID: <%= session.getSession(true) %>
+		SessionID: <%= session.getID() %>
 		<%
-			Integer counter = session.get("__COUNTER__");
+			Integer counter = session.getAttribute("__COUNTER__");
 			if(counter == null) {
 				counter = new Interger.intValue(0);
 			}
 			counter++;
-			session.put("__COUNTER__", counter);
+			session.putAttribute("__COUNTER__", counter);
 		%>
-		Counter: <%= session.get("__COUNTER__") %>
+		Counter: <%= session.getAttribute("__COUNTER__") %>
 	</h2>
 	<h1>Datasource test</h1>
 	<%
