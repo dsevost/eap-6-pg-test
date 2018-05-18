@@ -54,7 +54,7 @@
 						<label>SQL String</label>
 					</td>
 					<td>
-						<textarea name="sqlString" rows="5" cols="40"><%= sqlString %></textarea>
+						<textarea name="sqlString" rows="10" cols="120"><%= sqlString %></textarea>
 					</td>
 				</tr>
 				<tr align="center">
