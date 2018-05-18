@@ -12,14 +12,14 @@
 	</h2>
 	<h1>Session information</h1>
 	<h2>
-		SessionID: <%= session.getID() %>
+		SessionID: <%= session.getId() %>
 		<%
-			Integer counter = session.getAttribute("__COUNTER__");
+			Integer counter = (Integer) session.getAttribute("__COUNTER__");
 			if(counter == null) {
-				counter = Integer.intValue(0);
+				counter = 0;
 			}
 			counter++;
-			session.putAttribute("__COUNTER__", counter);
+			session.setAttribute("__COUNTER__", counter);
 		%>
 		Counter: <%= session.getAttribute("__COUNTER__") %>
 	</h2>
