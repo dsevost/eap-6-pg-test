@@ -37,8 +37,10 @@
 		} catch (Exception e) {
 			jndiName = "";
 			sqlString = "";
+			out.println("<pre>");
 			e.printStackTrace(new java.io.PrintWriter(out));
-		}
+			out.println("</pre>");
+			}
 	%>
 		<form>
 			<table>
