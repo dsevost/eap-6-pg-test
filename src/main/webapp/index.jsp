@@ -5,7 +5,7 @@
 	<h2>
 		<p>
 			Local server name (cluster node): <%= System.getProperty("jboss.node.name") + "/" + 
-			System.getProperty("jboss.server.name") + "/" + (new java.net.InetAddress()).getHostAddress()  %>
+			System.getProperty("jboss.server.name") + "/" + java.net.InetAddress().getLocalHost().getHostAddress()  %>
 			<br/> Server name: <%= request.getServerName() %>
 			<br/>
 		</p>
