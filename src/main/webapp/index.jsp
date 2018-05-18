@@ -16,7 +16,7 @@
 		<%
 			Integer counter = session.getAttribute("__COUNTER__");
 			if(counter == null) {
-				counter = new Interger.intValue(0);
+				counter = Integer.intValue(0);
 			}
 			counter++;
 			session.putAttribute("__COUNTER__", counter);
