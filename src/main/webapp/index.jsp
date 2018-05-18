@@ -21,7 +21,9 @@
     	jndiName = request.getParameter("jndiName");
     	if (jndiName == null) {
 			jndiName = System.getenv("DB_JNDI");
-			jndiName == null ? "";
+			if(jndiName == null) {
+				jndiName = "";
+			}
     	}
     	sqlString = request.getParameter("sqlString");
     	if (sqlString == null) {
