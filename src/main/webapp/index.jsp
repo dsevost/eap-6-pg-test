@@ -6,26 +6,32 @@
 		<p>
 			Local server name (cluster node):
 			<%= System.getProperty("jboss.node.name") + "/" + System.getProperty("jboss.server.name")  %>
-				<br/> Server name:
-				<%= request.getServerName() %>
-					<br/>
+			<br/> Server name:
+			<%= request.getServerName() %>
+			<br/>
 		</p>
 	</h2>
 	<h1>Datasource test</h1>
 	<%
-    String jndiName;
-    String sqlString;
-    java.sql.Connection connection = null;
-    java.sql.Statement statement = null;
+    	String jndiName;
+    	String sqlString;
+    	java.sql.Connection connection = null;
+    	java.sql.Statement statement = null;
 
-    jndiName = request.getParameter("jndiName");
-    if (jndiName == null) {
-		jndiName = "";
-    }
-    sqlString = request.getParameter("sqlString");
-    if (sqlString == null) {
-		sqlString = "";
-    }
+    	jndiName = request.getParameter("jndiName");
+    	if (jndiName == null) {
+			jndiName = System.getenv("DB_JNDI");
+			jndiName == null ? "";
+    	}
+    	sqlString = request.getParameter("sqlString");
+    	if (sqlString == null) {
+			sqlString = "
+			create table if not exists keypair (k integer not null primary key, v varchar(256));
+			insert into keypair VALUES (1, 'value 1');
+			insert into keypair VALUES (2, 'value 2');
+			select k,v from keypair;
+			";
+    	}
 	%>
 		<form>
 			<table>
