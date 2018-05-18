@@ -4,10 +4,8 @@
 	<h1>Cluster information</h1>
 	<h2>
 		<p>
-			Local server name (cluster node):
-			<%= System.getProperty("jboss.node.name") + "/" + System.getProperty("jboss.server.name")  %>
-			<br/> Server name:
-			<%= request.getServerName() %>
+			Local server name (cluster node): <%= System.getProperty("jboss.node.name") + "/" + System.getProperty("jboss.server.name" + "/" + java.net.InetAddress.getHostAddress()  %>
+			<br/> Server name: <%= request.getServerName() %>
 			<br/>
 		</p>
 	</h2>
