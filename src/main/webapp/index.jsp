@@ -28,10 +28,10 @@
     	sqlString = request.getParameter("sqlString");
     	if (sqlString == null) {
 			sqlString = 
-				"create table if not exists keypair (k integer not null primary key, v varchar(256)); \n" +
-				"insert into keypair VALUES (1, 'value 1'); \n" +
-				"insert into keypair VALUES (2, 'value 2'); \n" +
-				"select k,v from keypair; \n" +
+				"-- create table if not exists keypair (k integer not null primary key, v varchar(256)); \n" +
+				"-- insert into keypair VALUES (1, 'value 1'); \n" +
+				"-- insert into keypair VALUES (2, 'value 2'); \n" +
+				"-- select k,v from keypair; \n" +
 			"";
     	}
 	%>
