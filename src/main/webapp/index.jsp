@@ -4,7 +4,7 @@
 	<h1>Cluster information</h1>
 	<h2>
 		<p>
-			Local server name (cluster node): <%= System.getEnv("OPENSHIFT_REAL_NODE_NAME") + "/" + 
+			Local server name (cluster node): <%= System.getenv("OPENSHIFT_REAL_NODE_NAME") + "/" + 
 			System.getProperty("jboss.server.name") + "/" + java.net.InetAddress.getLocalHost().getHostAddress()  %>
 			<br/> Server name: <%= request.getServerName() %>
 			<br/>
